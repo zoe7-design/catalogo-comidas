@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo de Comidas</title>
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background-color: #F6F1EB;
+    }
+
+    /* ===== PORTADA ===== */
+    #portada {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #8B0000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+
+    #portada.oculta {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .portada-contenido {
+      text-align: center;
+      color: white;
+      padding: 30px;
+    }
+
+    .portada-contenido h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .linea {
+      width: 60px;
+      height: 2px;
+      background-color: rgba(255,255,255,0.6);
+      margin: 18px auto;
+      border-radius: 2px;
+    }
+
+    .portada-contenido .mini {
+      font-size: 15px;
+      font-style: italic;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+
+    .portada-contenido button {
+      background-color: white;
+      color: #8B0000;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background-color: #8B0000;
+      color: white;
+      padding: 34px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header .frase {
+      margin-top: 12px;
+      font-size: 16px;
+      font-style: italic;
+      opacity: 0.95;
+    }
+
+    header .detalle {
+      margin-top: 6px;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    /* ===== PRODUCTOS ===== */
+    .contenedor {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      padding: 28px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+      text-align: center;
+      padding-bottom: 14px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 16px 0 6px;
+      font-size: 18px;
+    }
+
+    .destacado {
+      font-size: 12px;
+      color: #8B0000;
+      font-weight: 600;
+    }
+
+    .precio {
+      font-size: 20px;
+      font-weight: 600;
+      color: #8B0000;
+      margin-bottom: 8px;
+    }
+
+    details {
+      margin: 0 18px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #8B0000;
+    }
+
+    /* ===== WHATSAPP ===== */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 16px;
+      background-color: #eee;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PORTADA -->
+  <div id="portada">
+    <div class="portada-contenido">
+      <h1>Comidas Caseras</h1>
+      <div class="linea"></div>
+      <p class="mini">Sabores caseros para compartir</p>
+      <button onclick="entrar()">Ver el menú</button>
+    </div>
+  </div>
+
+  <!-- CONTENIDO -->
+  <header>
+    <h1>Comidas Caseras</h1>
+    <p class="frase">Hecho con amor, para compartir en los mejores momentos.</p>
+    <p class="detalle">Recetas caseras • Ingredientes frescos • Preparado en el día</p>
+  </header>
+
+  <section class="contenedor">
+
+    <div class="card">
+      <img src="picada.jpg">
+      <h3>Picada <span class="destacado">⭐ Más pedido</span></h3>
+      <div class="precio">$9000</div>
+      <details>
+        <summary>Ver qué incluye</summary>
+        <p>Quesos, fiambres, aceitunas, pan y acompañamientos.</p>
+      </details>
+    </div>
+
+    <div class="card">
+      <img src="fernet.jpg">
+      <h3>Combo Fernet + Coca</h3>
+      <div class="precio">$4000</div>
+      <details>
+        <summary>Ver qué incluye</summary>
+        <p>Fernet Branca + Coca-Cola.</p>
+      </details>
+    </div>
+
+    <div class="card">
+      <img src="vitel-tone.jpg">
+      <h3>Vitel Toné</h3>
+      <div class="precio">$2000</div>
+      <details>
+        <summary>Ver qué incluye</summary>
+        <p>Carne con salsa de atún, alcaparras y limón.</p>
+      </details>
+    </div>
+
+    <div class="card">
+      <img src="ensalada-rusa.jpg">
+      <h3>Ensalada Rusa</h3>
+      <div class="precio">$1000</div>
+      <details>
+        <summary>Ver qué incluye</summary>
+        <p>Papa, zanahoria, arvejas, huevo y mayonesa.</p>
+      </details>
+    </div>
+
+  </section>
+
+  <footer>
+    Gracias por elegir comida casera ❤️
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/5491154821331" target="_blank">
+    💬 Pedir por WhatsApp
+  </a>
+
+  <script>
+    function entrar() {
+      const portada = document.getElementById("portada");
+      portada.classList.add("oculta");
+      setTimeout(() => portada.style.display = "none", 600);
+    }
+  </script>
+
+</body>
+</html>
