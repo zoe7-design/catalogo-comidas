@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catálogo de Comidas</title>
+  <title>Comidas Caseras</title>
 
-  <!-- Fuentes -->
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- FUENTES -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -13,15 +16,13 @@
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       background-color: #F6F1EB;
+      scroll-behavior: smooth;
     }
 
     /* ===== PORTADA ===== */
     #portada {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-color: #8B0000;
       display: flex;
       align-items: center;
@@ -41,10 +42,15 @@
       padding: 30px;
     }
 
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
     .portada-contenido h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      margin-bottom: 10px;
+      font-size: 38px;
+      margin: 10px 0;
     }
 
     .linea {
@@ -55,59 +61,87 @@
       border-radius: 2px;
     }
 
-    .portada-contenido .mini {
+    .mini {
       font-size: 15px;
       font-style: italic;
       opacity: 0.9;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .portada-contenido button {
       background-color: white;
       color: #8B0000;
       border: none;
-      padding: 14px 30px;
+      padding: 14px 32px;
       border-radius: 30px;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
     }
 
+    /* ===== NAV ===== */
+    nav {
+      background-color: #8B0000;
+      color: white;
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
     /* ===== HEADER ===== */
     header {
       background-color: #8B0000;
       color: white;
-      padding: 34px 20px;
+      padding: 50px 20px 40px;
       text-align: center;
+    }
+
+    header img {
+      width: 90px;
+      margin-bottom: 14px;
     }
 
     header h1 {
       font-family: 'Playfair Display', serif;
       margin: 0;
-      font-size: 36px;
+      font-size: 34px;
     }
 
-    header .frase {
+    header p {
       margin-top: 12px;
-      font-size: 16px;
       font-style: italic;
       opacity: 0.95;
     }
 
-    header .detalle {
-      margin-top: 6px;
-      font-size: 14px;
-      opacity: 0.85;
+    /* ===== SECCIONES ===== */
+    section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    /* ===== PRODUCTOS ===== */
+    h2 {
+      text-align: center;
+      color: #8B0000;
+      margin-bottom: 34px;
+      font-family: 'Playfair Display', serif;
+    }
+
     .contenedor {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      padding: 28px;
-      max-width: 1200px;
-      margin: auto;
+      gap: 24px;
     }
 
     .card {
@@ -116,7 +150,7 @@
       overflow: hidden;
       box-shadow: 0 6px 14px rgba(0,0,0,0.12);
       text-align: center;
-      padding-bottom: 14px;
+      padding-bottom: 16px;
     }
 
     .card img {
@@ -127,51 +161,64 @@
 
     .card h3 {
       margin: 16px 0 6px;
-      font-size: 18px;
-    }
-
-    .destacado {
-      font-size: 12px;
-      color: #8B0000;
-      font-weight: 600;
     }
 
     .precio {
       font-size: 20px;
       font-weight: 600;
       color: #8B0000;
-      margin-bottom: 8px;
     }
 
     details {
-      margin: 0 18px;
+      margin: 10px 18px;
       font-size: 14px;
       color: #444;
     }
 
-    details summary {
+    summary {
       cursor: pointer;
       font-weight: 600;
       color: #8B0000;
     }
 
-    /* ===== WHATSAPP ===== */
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      padding: 14px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    /* ===== SECCIÓN PROMO (SUTIL) ===== */
+    .promo-box {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      text-align: center;
+      max-width: 500px;
+      margin: auto;
     }
 
+    .promo-box p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ===== CONTACTO ===== */
+    .contacto {
+      text-align: center;
+    }
+
+    .contacto a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 14px 26px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* ===== FOOTER ===== */
     footer {
       text-align: center;
-      padding: 28px 16px;
+      padding: 30px 20px;
       background-color: #eee;
       font-size: 14px;
     }
@@ -180,32 +227,44 @@
 
 <body>
 
-  <!-- PORTADA -->
-  <div id="portada">
-    <div class="portada-contenido">
-      <h1>Comidas Caseras</h1>
-      <div class="linea"></div>
-      <p class="mini">Sabores caseros para compartir</p>
-      <button onclick="entrar()">Ver el menú</button>
-    </div>
-  </div>
-
-  <!-- CONTENIDO -->
-  <header>
+<!-- PORTADA -->
+<div id="portada">
+  <div class="portada-contenido">
+    <img src="logo.png" class="logo" alt="Logo">
     <h1>Comidas Caseras</h1>
-    <p class="frase">Hecho con amor, para compartir en los mejores momentos.</p>
-    <p class="detalle">Recetas caseras • Ingredientes frescos • Preparado en el día</p>
-  </header>
+    <div class="linea"></div>
+    <p class="mini">Sabores caseros para compartir</p>
+    <button onclick="entrar()">Ver el menú</button>
+  </div>
+</div>
 
-  <section class="contenedor">
+<!-- NAV -->
+<nav>
+  <a href="#menu">Menú</a>
+  <a href="#especial">Especial</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <img src="logo.png" alt="Logo">
+  <h1>Comidas Caseras</h1>
+  <p>Preparado con dedicación y mucho cuidado</p>
+</header>
+
+<!-- MENU -->
+<section id="menu">
+  <h2>Nuestro Menú</h2>
+
+  <div class="contenedor">
 
     <div class="card">
       <img src="picada.jpg">
-      <h3>Picada <span class="destacado">⭐ Más pedido</span></h3>
+      <h3>Picada</h3>
       <div class="precio">$9000</div>
       <details>
         <summary>Ver qué incluye</summary>
-        <p>Quesos, fiambres, aceitunas, pan y acompañamientos.</p>
+        <p>Quesos, fiambres, aceitunas y pan.</p>
       </details>
     </div>
 
@@ -225,7 +284,7 @@
       <div class="precio">$2000</div>
       <details>
         <summary>Ver qué incluye</summary>
-        <p>Carne con salsa de atún, alcaparras y limón.</p>
+        <p>Carne con salsa de atún y alcaparras.</p>
       </details>
     </div>
 
@@ -235,27 +294,46 @@
       <div class="precio">$1000</div>
       <details>
         <summary>Ver qué incluye</summary>
-        <p>Papa, zanahoria, arvejas, huevo y mayonesa.</p>
+        <p>Papa, zanahoria, huevo y mayonesa.</p>
       </details>
     </div>
 
-  </section>
+  </div>
+</section>
 
-  <footer>
-    Gracias por elegir comida casera ❤️
-  </footer>
+<!-- ESPECIAL -->
+<section id="especial">
+  <h2>Una opción para compartir</h2>
+  <div class="promo-box">
+    <p>
+      Una selección pensada para acompañar<br>
+      esos momentos que se disfrutan sin apuro.
+    </p>
+  </div>
+</section>
 
-  <a class="whatsapp" href="https://wa.me/5491154821331" target="_blank">
-    💬 Pedir por WhatsApp
+<!-- CONTACTO -->
+<section id="contacto" class="contacto">
+  <h2>Contacto</h2>
+  <p>Consultas y pedidos por WhatsApp</p>
+  <a href="https://wa.me/5491154821331" target="_blank">
+    💬 Escribinos por WhatsApp
   </a>
+</section>
 
-  <script>
-    function entrar() {
-      const portada = document.getElementById("portada");
-      portada.classList.add("oculta");
-      setTimeout(() => portada.style.display = "none", 600);
-    }
-  </script>
+<footer>
+  Gracias por elegir comida casera ❤️
+</footer>
+
+<script>
+  function entrar() {
+    const p = document.getElementById("portada");
+    p.classList.add("oculta");
+    setTimeout(() => p.style.display = "none", 600);
+  }
+</script>
 
 </body>
 </html>
+
+
