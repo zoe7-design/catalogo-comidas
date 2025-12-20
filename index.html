@@ -1,184 +1,199 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comidas Caseras</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comidas Caseras</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<!-- FUENTE -->
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #F6F1EB;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    /* PORTADA */
-    #portada {
-      position: fixed;
-      inset: 0;
-      background-color: #8B0000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.6s ease;
-    }
-    #portada.oculta {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .portada-contenido {
-      text-align: center;
-      color: white;
-    }
-    .portada-contenido img {
-      width: 120px;
-      margin-bottom: 20px;
-    }
-    .portada-contenido h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      margin: 0;
-    }
-    .linea {
-      width: 60px;
-      height: 2px;
-      background: rgba(255,255,255,0.6);
-      margin: 16px auto;
-    }
-    .mini {
-      font-style: italic;
-      margin-bottom: 28px;
-    }
-    .portada-contenido button {
-      padding: 14px 30px;
-      border-radius: 30px;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-    }
+body {
+  margin: 0;
+  font-family: 'Alegreya', serif;
+  background: #F3F1ED;
+  color: #2F2F2F;
+}
 
-    /* NAV */
-    nav {
-      background: #8B0000;
-      color: white;
-      padding: 12px;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-    }
+#portada {
+  position: fixed;
+  inset: 0;
+  background-color: #5A6B5C;
+  background-image: url("textura.png");
+  background-size: cover;
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: transform 0.9s ease;
+}
 
-    header {
-      background: #8B0000;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-    }
-    header img {
-      width: 90px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      margin: 0;
-    }
+.portada-contenido {
+  background: rgba(0,0,0,0.15);
+  padding: 30px;
+  border-radius: 16px;
+}
 
-    section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
 
-    h2 {
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      color: #8B0000;
-      margin-bottom: 10px;
-    }
+#portada.oculta {
+  transform: translateY(-100%);
+}
 
-    .subtitulo {
-      text-align: center;
-      font-style: italic;
-      margin-bottom: 40px;
-    }
+.portada-contenido {
+  text-align: center;
+  padding: 20px;
+  max-width: 360px;
+}
 
-    .contenedor {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-    }
+.portada-contenido img {
+  width: 110px;
+  margin-bottom: 20px;
+}
 
-    .card {
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-      overflow: hidden;
-      text-align: center;
-      padding-bottom: 16px;
-    }
+.portada-contenido h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 600;
+}
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+.portada-contenido p {
+  margin: 16px 0 30px;
+  font-size: 17px;
+  opacity: 0.95;
+}
 
-    .precio {
-      font-size: 20px;
-      font-weight: 600;
-      color: #8B0000;
-      margin: 8px 0;
-    }
+.portada-contenido button {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  background: #F3E6B8;
+  color: #2F2F2F;
+  font-weight: 600;
+  font-family: 'Alegreya', serif;
+  cursor: pointer;
+}
 
-    select {
-      padding: 8px 12px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-      margin-top: 6px;
-      cursor: pointer;
-    }
+/* CONTENIDO */
+main {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.9s ease;
+}
 
-    details {
-      margin: 10px 18px;
-      font-size: 14px;
-    }
+main.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    /* PROMOS */
-    #promos {
-      background: #F0E2D8;
-      border-radius: 20px;
-    }
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 70px 20px;
+}
 
-    /* BOTON WHATSAPP */
-    .btn-wsp {
-      display: inline-block;
-      margin-top: 12px;
-      background: #25D366;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-    }
+/* INTRO */
+.intro {
+  max-width: 720px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.9;
+  background: #ffffff;
+  padding: 30px;
+  border-left: 6px solid #9A7B4F;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
 
-    footer {
-      background: #eee;
-      text-align: center;
-      padding: 30px;
-      font-size: 14px;
-    }
-  </style>
+/* MENÚ */
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #5A6B5C;
+  font-weight: 600;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card div {
+  padding: 16px;
+}
+
+.card h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.precio {
+  color: #9A7B4F;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.personas {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* CIERRE */
+.cierre {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.8;
+  padding-top: 20px;
+}
+
+/* CONTACTO */
+.contacto {
+  text-align: center;
+}
+
+.contacto a {
+  display: inline-block;
+  margin-top: 20px;
+  background: #5A6B5C;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Alegreya', serif;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 15px;
+  opacity: 0.7;
+}
+</style>
 </head>
 
 <body>
@@ -188,223 +203,91 @@
   <div class="portada-contenido">
     <img src="logo.png">
     <h1>Comidas Caseras</h1>
-    <div class="linea"></div>
-    <p class="mini">Para compartir en estas fiestas</p>
-    <button onclick="entrar()">Ver el menú</button>
+    <p>Cocinar, música y ganas.</p>
+    <button onclick="entrar()">Ver lo que preparo</button>
   </div>
 </div>
 
-<nav>
-  <a href="#menu">Menú</a>
-  <a href="#promos">Promos</a>
-  <a href="#contacto">Contacto</a>
-</nav>
+<main id="contenido">
 
-<header>
-  <img src="logo.png">
-  <h1>Comidas Caseras</h1>
-</header>
 
-<!-- MENÚ -->
-<section id="menu">
-  <h2>Nuestro Menú</h2>
-  <p class="subtitulo">Platos caseros preparados con dedicación</p>
+<section>
+  <div class="intro">
+    Me gusta cocinar, a mi manera.<br><br>
+    Me gusta cocinar escuchando música,
+    reggae, rock, lo que acompañe el momento.<br><br>
+    Para estas fiestas voy a preparar algunas cosas.<br>
+    Si te gusta, buenísimo.<br>
+    Y si no, está todo bien también.
+  </div>
+</section>
 
-  <div class="contenedor">
+<section>
+  <h2>Lo que preparo</h2>
+
+  <div class="menu">
 
     <div class="card">
       <img src="picada.jpg">
-      <h3>Picada</h3>
-      <div class="precio" id="precio-picada">$9000</div>
-      <select onchange="precio('picada', this.value)">
-        <option value="9000">2 personas</option>
-        <option value="14000">4 personas</option>
-        <option value="19000">6 personas</option>
-      </select>
-      <details>
-        <summary>Ver qué incluye</summary>
-        <p>Quesos, fiambres, aceitunas y pan.</p>
-      </details>
+      <div>
+        <h3>Picada</h3>
+        <div class="precio">$9000</div>
+        <div class="personas">Ideal para 2 personas</div>
+      </div>
     </div>
 
     <div class="card">
       <img src="vitel-tone.jpg">
-      <h3>Vitel Toné</h3>
-      <div class="precio" id="precio-vitel">$2000</div>
-      <select onchange="precio('vitel', this.value)">
-        <option value="2000">2 personas</option>
-        <option value="3000">4 personas</option>
-        <option value="4500">6 personas</option>
-      </select>
-      <details>
-        <summary>Ver qué incluye</summary>
-        <p>Carne con salsa de atún y alcaparras.</p>
-      </details>
+      <div>
+        <h3>Vitel Toné</h3>
+        <div class="precio">$2000</div>
+        <div class="personas">Ideal para 2 personas</div>
+      </div>
     </div>
 
     <div class="card">
       <img src="ensalada-rusa.jpg">
-      <h3>Ensalada Rusa</h3>
-      <div class="precio" id="precio-rusa">$1000</div>
-      <select onchange="precio('rusa', this.value)">
-        <option value="1000">2 personas</option>
-        <option value="1800">4 personas</option>
-        <option value="2600">6 personas</option>
-      </select>
-      <details>
-        <summary>Ver qué incluye</summary>
-        <p>Papa, zanahoria, huevo y mayonesa.</p>
-      </details>
+      <div>
+        <h3>Ensalada rusa</h3>
+        <div class="precio">$1000</div>
+        <div class="personas">Ideal para 2 personas</div>
+      </div>
     </div>
 
     <div class="card">
-  <img src="fernet.jpg">
-  <h3>Combo Fernet + Coca</h3>
-
-  <div class="precio" id="precio-fernet">$7500</div>
-
-  <select id="select-fernet" onchange="cambiarFernet()">
-    <option value="1">Combo 1</option>
-    <option value="2">Combo 2</option>
-    <option value="3">Combo 3</option>
-  </select>
-
-  <p id="ideal-fernet" style="font-size:13px; font-style:italic; margin-top:6px;">
-    Ideal para 2 personas
-  </p>
-
-  <p id="detalle-fernet" style="font-size:14px; margin:10px 18px;">
-    • 1 Fernet Branca<br>
-    • 1 Coca-Cola 2,25 L<br>
-    • Hielo
-  </p>
-</div>
-
-
-  </div>
-</section>
-
-<!-- PROMOS -->
-<section id="promos">
-  <h2>Promos Especiales</h2>
-  <p class="subtitulo">Ideales para compartir</p>
-
-  <div class="contenedor">
-
-    <div class="card">
-      <img src="combo-fiesta.jpg">
-      <h3>Promo Fiesta</h3>
-      <div class="precio" id="precio-promo-fiesta">$12000</div>
-      <select onchange="precio('promo-fiesta', this.value)">
-        <option value="12000">2 personas</option>
-        <option value="18000">4 personas</option>
-        <option value="24000">6 personas</option>
-      </select>
-      <details>
-        <summary>Ver qué incluye</summary>
-        <p>Picada + Ensalada rusa + Fernet y Coca</p>
-      </details>
-      <a class="btn-wsp"
-         href="https://wa.me/5491154821331?text=Hola,%20quiero%20la%20Promo%20Fiesta"
-         target="_blank">💬 Consultar</a>
-    </div>
-
-    <div class="card">
-      <img src="combo-navidad.jpg">
-      <h3>Promo Navidad</h3>
-      <div class="precio" id="precio-promo-navidad">$18000</div>
-      <select onchange="precio('promo-navidad', this.value)">
-        <option value="18000">2 personas</option>
-        <option value="26000">4 personas</option>
-        <option value="34000">6 personas</option>
-      </select>
-      <details>
-        <summary>Ver qué incluye</summary>
-        <p>Vitel Toné + Ensalada rusa + Pan casero</p>
-      </details>
-      <a class="btn-wsp"
-         href="https://wa.me/5491154821331?text=Hola,%20quiero%20la%20Promo%20Navidad"
-         target="_blank">💬 Consultar</a>
+      <img src="fernet.jpg">
+      <div>
+        <h3>Fernet + Coca</h3>
+        <div class="precio">$7500</div>
+        <div class="personas">Para compartir</div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<section id="contacto">
-  <h2>Contacto</h2>
-  <p class="subtitulo">Consultas y pedidos por WhatsApp</p>
-  <div style="text-align:center;">
-    <a class="btn-wsp" href="https://wa.me/5491154821331" target="_blank">
-      Escribinos
-    </a>
-  </div>
+<section class="cierre">
+  Cocino para que se coma rico y se esté bien.<br>
+  Nada más que eso.
+</section>
+
+<section class="contacto">
+  <a href="https://wa.me/5491154821331" target="_blank">
+    Escribime por WhatsApp
+  </a>
 </section>
 
 <footer>
-  Gracias por elegir comida casera ❤️
+  Gracias por estar.
 </footer>
 
-<script>
-  function entrar() {
-    const p = document.getElementById("portada");
-    p.classList.add("oculta");
-    setTimeout(() => p.style.display = "none", 600);
-  }
-
-  function precio(prod, valor) {
-    document.getElementById("precio-" + prod).textContent = "$" + valor;
-  }
-
-  function cambiarFernet() {
-    const select = document.getElementById("select-fernet").value;
-    const precio = document.getElementById("precio-fernet");
-    const detalle = document.getElementById("detalle-fernet");
-    const ideal = document.getElementById("ideal-fernet");
-
-    if (select == "1") {
-      precio.textContent = "$7500";
-      ideal.textContent = "Ideal para 2 personas";
-      detalle.innerHTML = `
-        • 1 Fernet Branca<br>
-        • 1 Coca-Cola 2,25 L<br>
-        • Hielo
-      `;
-    } 
-    else if (select == "2") {
-      precio.textContent = "$14000";
-      ideal.textContent = "Ideal para 4 personas";
-      detalle.innerHTML = `
-        • 2 Fernet Branca<br>
-        • 2 Coca-Cola 2,25 L<br>
-        • Hielo
-      `;
-    } 
-    else {
-      precio.textContent = "$20000";
-      ideal.textContent = "Ideal para 6 personas";
-      detalle.innerHTML = `
-        • 3 Fernet Branca<br>
-        • 3 Coca-Cola 2,25 L<br>
-        • Hielo
-      `;
-    }
-  }
-</script>
-
-</body>
-</html>
-
+</main>
 
 <script>
-  function entrar() {
-    const p = document.getElementById("portada");
-    p.classList.add("oculta");
-    setTimeout(() => p.style.display = "none", 600);
-  }
-
-  function precio(prod, valor) {
-    document.getElementById("precio-" + prod).textContent = "$" + valor;
-  }
+function entrar() {
+  document.getElementById("portada").classList.add("oculta");
+  document.getElementById("contenido").classList.add("visible");
+}
 </script>
 
 </body>
